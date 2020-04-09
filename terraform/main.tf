@@ -4,13 +4,13 @@ terraform {
 
 provider "google" {
   version = "~> 3.15.0"
-  project = "docker-266910"
-  region  = "us-central1"
+  project = var.project_name
+  region  = var.region_name
 }
 
 resource "google_container_cluster" "awesome-k8s-cluster" {
   name     = "awesome-k8s-cluster"
-  location = "us-central1-c"
+  location = var.location_name
 
   remove_default_node_pool = true
   initial_node_count       = 1
@@ -27,9 +27,9 @@ resource "google_container_cluster" "awesome-k8s-cluster" {
 
 resource "google_container_node_pool" "awesome-k8s-nodes" {
   name       = "awesome-k8s-node-pool"
-  location   = "us-central1-c"
+  location   = var.location_name
   cluster    = google_container_cluster.awesome-k8s-cluster.name
-  node_count = 3
+  node_count = var.count_vms
 
   node_config {
     preemptible  = true
@@ -46,3 +46,18 @@ resource "google_container_node_pool" "awesome-k8s-nodes" {
     ]
   }
 }
+
+#provider "kubernetes" {
+#  host                   = "https://${google_container_cluster.awesome-k8s-cluster.endpoint}"
+#  username               = "${google_container_cluster.awesome-k8s-cluster.master_auth.0.username}"
+#  password               = "${google_container_cluster.awesome-k8s-cluster.master_auth.0.password}"
+#  client_certificate     = "${base64decode(google_container_cluster.awesome-k8s-cluster.master_auth.0.client_certificate)}"
+#  client_key             = "${base64decode(google_container_cluster.awesome-k8s-cluster.master_auth.0.client_key)}"
+#  cluster_ca_certificate = "${base64decode(google_container_cluster.awesome-k8s-cluster.master_auth.0.cluster_ca_certificate)}"
+#}
+
+#resource "kubernetes_namespace" "prod" {
+#  metadata {
+#    name = "metadata-prod-namespace"
+#  }
+#}
