@@ -14,8 +14,18 @@ terraform init
 terraform apply
 gcloud container clusters get-credentials awesome-k8s-cluster --zone us-central1-c --project docker-266910
 
+# helm 2 install
+helm init
+
 # monitoring install
-https://habr.com/ru/company/flant/blog/340728/
+kubectl create namespace monitoring
+helm install --name monitoring-operators --namespace monitoring --set rbac.create=true stable/prometheus-operator -f ./monitoring/prometheus-operator-values.yaml
+
+kubectl port-forward -n monitoring  monitoring-operators-grafana-6c6b4985bd-cf775 3000
+
+# для логина в графану
+kubectl get secret -n monitoring monitoring-operators-grafana -o jsonpath="{.data.admin-password}" |  base64 --decode ; echo
+kubectl get secret -n monitoring monitoring-operators-grafana -o jsonpath="{.data.admin-user}" |  base64 --decode ; echo
 
 план:
 
