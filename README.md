@@ -27,6 +27,18 @@ kubectl port-forward -n monitoring  monitoring-operators-grafana-6c6b4985bd-cf77
 kubectl get secret -n monitoring monitoring-operators-grafana -o jsonpath="{.data.admin-password}" |  base64 --decode ; echo
 kubectl get secret -n monitoring monitoring-operators-grafana -o jsonpath="{.data.admin-user}" |  base64 --decode ; echo
 
+
+# установка гитлаба
+kubectl create namespace gitlab
+helm repo add gitlab https://charts.gitlab.io
+cd gitlab/gitlab-omnibus
+helm install --name gitlab . -f values.yaml --namespace gitlab
+
+дёрнуть ip
+kubectl get service -n nginx-ingress nginx
+и прописать в хостцы
+34.71.245.151 gitlab-gitlab 
+
 план:
 
 1) конфигурация кластера k8s через terraform
