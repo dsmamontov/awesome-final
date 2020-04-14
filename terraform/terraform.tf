@@ -11,5 +11,5 @@ variable "location_name" {
 }
 
 variable "count_vms" {
-  default = "4"
+  default = "3"
 }

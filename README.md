@@ -22,10 +22,11 @@ kubectl create namespace monitoring
 helm install --name monitoring-operators --namespace monitoring --set rbac.create=true stable/prometheus-operator -f ./monitoring/prometheus-operator-values.yaml
 
 kubectl port-forward -n monitoring  monitoring-operators-grafana-6c6b4985bd-cf775 3000
+grafana.domain.com прописать в хостцы
 
 # для логина в графану
 kubectl get secret -n monitoring monitoring-operators-grafana -o jsonpath="{.data.admin-password}" |  base64 --decode ; echo
-kubectl get secret -n monitoring monitoring-operators-grafana -o jsonpath="{.data.admin-user}" |  base64 --decode ; echo
+  kubectl get secret -n monitoring monitoring-operators-grafana -o jsonpath="{.data.admin-user}" |  base64 --decode ; echo
 
 
 # установка гитлаба
@@ -37,12 +38,10 @@ helm install --name gitlab . -f values.yaml --namespace gitlab
 дёрнуть ip
 kubectl get service -n nginx-ingress nginx
 и прописать в хостцы
-34.71.245.151 gitlab-gitlab 
+34.71.245.151 gitlab-gitlab
 
 план:
 
-1) конфигурация кластера k8s через terraform
-2) устновка гита и ci
 3) локальная установка риложения
 4) установка приложения в кластере
 5) настройка мониторинга
