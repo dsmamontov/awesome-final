@@ -40,8 +40,7 @@ kubectl get service -n nginx-ingress nginx
 и прописать в хостцы
 34.71.245.151 gitlab-gitlab
 
-план:
+# приложение
 
-3) локальная установка риложения
-4) установка приложения в кластере
-5) настройка мониторинга
+https://github.com/express42/search_engine_crawler
+https://github.com/express42/search_engine_ui
