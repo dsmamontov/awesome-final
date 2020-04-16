@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: ui-service
+spec:
+  selector:
+    app: ui
+  ports:
+  - port: 8000
+    targetPort: 8000

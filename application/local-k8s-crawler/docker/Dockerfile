@@ -10,4 +10,4 @@ EXPOSE 8000
 
 ENTRYPOINT []
 
-#ENTRYPOINT ["python search_engine_crawler/crawler/crawler.py"]
+#ENTRYPOINT ["python3 search_engine_crawler/crawler/crawler.py"]

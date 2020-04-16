@@ -34,3 +34,5 @@ spec:
           value: ".*github.com"
         command: ["python3 crawler.py"]
         args: ["https://vitkhab.github.io/search_engine_test_site/"]
+        ports:
+        - containerPort: 8000
