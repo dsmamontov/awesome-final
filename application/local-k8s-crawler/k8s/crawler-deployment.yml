@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: rabbitmq-deployment
+  name: crawler-deployment
   labels:
-    app: rabbitmq
+    app: crawler
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: rabbitmq
+      app: crawler
   template:
     metadata:
       labels:
-        app: rabbitmq
+        app: crawler
     spec:
       containers:
-      - name: rabbitmq
-        image: rabbitmq:3-management
+      - name: crawler
+        image: crawler:3-management
