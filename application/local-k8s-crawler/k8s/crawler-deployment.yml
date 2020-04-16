@@ -16,4 +16,21 @@ spec:
     spec:
       containers:
       - name: crawler
-        image: crawler:3-management
+        image: mamontov/crawler:v3
+        env:
+        - name: MONGO
+          value: "mongo-service"
+        - name: MONGO_PORT
+          value: "27017"
+        - name: RMQ_HOST
+          value: "rabbit-service"
+        - name: RMQ_USERNAME
+          value: "user"
+        - name: RMQ_PASSWORD
+          value: "password"
+        - name: CHECK_INTERVAL
+          value: "10"
+        - name: EXCLUDE_URLS
+          value: ".*github.com"
+        command: ["python3 crawler.py"]
+        args: ["https://vitkhab.github.io/search_engine_test_site/"]

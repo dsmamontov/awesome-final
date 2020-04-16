@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: rabbit-service
+spec:
+  selector:
+    app: rabbit
+  ports:
+  - port: 5672
+    targetPort: 5672 
