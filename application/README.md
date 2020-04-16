@@ -1,4 +1,5 @@
 https://github.com/express42/search_engine_crawler
+https://github.com/express42/search_engine_ui
 
 yum install -y git epel-release
 git clone https://github.com/express42/search_engine_crawler.git
