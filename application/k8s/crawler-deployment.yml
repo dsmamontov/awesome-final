@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: crawler
-        image: mamontov/crawler:v3
+        image: mamontov/crawler:v1.3
         env:
         - name: MONGO
           value: "mongo-service"
@@ -25,9 +25,9 @@ spec:
         - name: RMQ_HOST
           value: "rabbit-service"
         - name: RMQ_USERNAME
-          value: "user"
+          value: "guest"
         - name: RMQ_PASSWORD
-          value: "password"
+          value: "guest"
         - name: CHECK_INTERVAL
           value: "10"
         - name: EXCLUDE_URLS
