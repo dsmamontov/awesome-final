@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ui
-        image: mamontov/ui:v1.2
+        image: mamontov/ui:v1.2-crawler
         env:
         - name: MONGO
           value: "mongo-service"
@@ -24,6 +24,10 @@ spec:
           value: "27017"
         - name: FLASK_APP
           value: "/ui.py"
-        command: ["gunicorn -b 0.0.0.0 ui:app"]
+        command:
+          - /usr/bin/gunicorn
+        args:
+          - "-b 0.0.0.0"
+          - "ui:app"
         ports:
         - containerPort: 8000

@@ -32,7 +32,10 @@ spec:
           value: "10"
         - name: EXCLUDE_URLS
           value: ".*github.com"
-        command: ["python3 crawler.py"]
-        args: ["https://vitkhab.github.io/search_engine_test_site/"]
+        command:
+          - python3
+        args:
+          - "/crawler.py"
+          - "https://vitkhab.github.io/search_engine_test_site/"
         ports:
         - containerPort: 8000
