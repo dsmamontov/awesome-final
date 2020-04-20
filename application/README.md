@@ -14,7 +14,7 @@ RMQ_PASSWORD=password
 CHECK_INTERVAL=10
 EXCLUDE_URLS='.*github.com'
 
-========= 18 апреля
+========= локальный запуск
 
 docker run -d --rm -p 27017:27017 --name mongo-app mongo:4.2.5
 
