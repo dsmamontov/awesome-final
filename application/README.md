@@ -1,7 +1,6 @@
 https://github.com/express42/search_engine_crawler
 https://github.com/express42/search_engine_ui
 
-docker build -t crawler:v1 .
 
 =========
 
@@ -27,3 +26,5 @@ docker build -t crawler:v1.3 .
 docker run -d --name crawler-app -p 8001:8000 -e MONGO=172.17.0.2 -e MONGO_PORT=27017 -e RMQ_HOST=172.17.0.3 -e RMQ_QUEUE=crawler_engine_queue -e RMQ_USERNAME=guest -e RMQ_PASSWORD=guest -e CHECK_INTERVAL=10 -e EXCLUDE_URLS='.*github.com' crawler:v1.3 python3 /crawler.py https://vitkhab.github.io/search_engine_test_site/
 
 =========
+
+применить настрйоки kubectl apply -f . --force

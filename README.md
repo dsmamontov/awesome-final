@@ -41,3 +41,5 @@ kubectl get service -n nginx-ingress nginx
 
 https://github.com/express42/search_engine_crawler
 https://github.com/express42/search_engine_ui
+
+#helm upgrade --reuse-values --namespace monitoring --set rbac.create=true -f ./monitoring monitoring-operators stable/prometheus-operator
