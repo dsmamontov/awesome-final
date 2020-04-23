@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq-deployment
+  labels:
+    app: {{ .Values.rabbit.deployment.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.rabbit.deployment.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.rabbit.deployment.name }}
+    spec:
+      containers:
+      - name: {{ .Values.rabbit.deployment.name }}
+        image: {{ .Values.rabbit.deployment.image }}

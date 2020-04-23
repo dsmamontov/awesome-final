@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crawler-deployment
+  labels:
+    app: {{ .Values.crawler.deployment.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.crawler.deployment.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.crawler.deployment.name }}
+    spec:
+      containers:
+      - name: {{ .Values.crawler.deployment.name }}
+        image: {{ .Values.crawler.deployment.image }}
+        env:
+        - name: MONGO
+          value: {{ .Values.mongo.service.name }}
+        - name: MONGO_PORT
+          value: {{ .Values.mongo.service.port |  quote }}
+        - name: RMQ_HOST
+          value: "rabbit-service"
+        - name: RMQ_USERNAME
+          value: "guest"
+        - name: RMQ_PASSWORD
+          value: "guest"
+        - name: CHECK_INTERVAL
+          value: "10"
+        - name: EXCLUDE_URLS
+          value: ".*github.com"
+        command:
+          - python3
+        args:
+          - "/crawler.py"
+          - "https://vitkhab.github.io/search_engine_test_site/"
+        ports:
+        - containerPort: {{ .Values.ui.service.externalPort }}

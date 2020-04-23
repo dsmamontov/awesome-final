@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-deployment
+  labels:
+    app: {{ .Values.mongo.deployment.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.mongo.deployment.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.mongo.deployment.name }}
+    spec:
+      containers:
+      - name: {{ .Values.mongo.deployment.name }}
+        image: {{ .Values.mongo.deployment.image }}
+        ports:
+        - containerPort: {{ .Values.mongo.service.port }}

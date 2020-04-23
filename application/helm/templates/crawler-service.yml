@@ -1,0 +1,26 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ .Values.crawler.service.name }}
+  labels:
+    release: {{ .Release.Name }}
+spec:
+  type: ClusterIP
+  selector:
+    app: crawler
+  ports:
+  - port: {{ .Values.crawler.service.externalPort }}
+    targetPort: {{ .Values.ui.service.targetPort }}
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ .Values.crawler.service.name }}
+  namespace: monitoring
+  labels:
+    release: {{ .Release.Name }}
+spec:
+  type: ExternalName
+  externalName: crawler-service.default.svc.cluster.local
+  ports:
+  - port: {{ .Values.ui.service.externalPort }}

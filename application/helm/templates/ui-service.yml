@@ -1,0 +1,26 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ .Values.ui.service.name }}
+  labels:
+    release: {{ .Release.Name }}
+spec:
+  type: ClusterIP
+  selector:
+    app: ui
+  ports:
+  - port: {{ .Values.ui.service.externalPort }}
+    targetPort: {{ .Values.ui.service.targetPort }}
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ .Values.ui.service.name }}
+  namespace: monitoring
+  labels:
+    release: {{ .Release.Name }}
+spec:
+  type: ExternalName
+  externalName: ui-service.default.svc.cluster.local
+  ports:
+  - port: {{ .Values.ui.service.externalPort }}

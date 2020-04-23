@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ .Values.mongo.service.name }}
+spec:
+  type: ClusterIP
+  selector:
+    app: mongo
+  ports:
+  - port: {{ .Values.mongo.service.port }}
+    targetPort: {{ .Values.mongo.service.port }}

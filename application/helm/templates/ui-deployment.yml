@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui-deployment
+  labels:
+    app: {{ .Values.ui.deployment.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.ui.deployment.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.ui.deployment.name }}
+    spec:
+      containers:
+      - name: {{ .Values.ui.deployment.name }}
+        image: {{ .Values.ui.deployment.image }}
+        env:
+        - name: MONGO
+          value: "mongo-service"
+        - name: MONGO_PORT
+          value: "27017"
+        - name: FLASK_APP
+          value: "/ui.py"
+        command:
+          - /usr/bin/gunicorn
+        args:
+          - "-b 0.0.0.0"
+          - "ui:app"
+        ports:
+        - containerPort: {{ .Values.ui.service.externalPort }}

@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ .Values.rabbit.service.name }}
+spec:
+  type: ClusterIP
+  selector:
+    app: {{ .Values.rabbit.deployment.name }}
+  ports:
+  - name: port1
+    port: {{ .Values.rabbit.service.port1 |  quote }}
+    targetPort: {{ .Values.rabbit.service.port1 |  quote }}
+  - name: port2
+    port: {{ .Values.rabbit.service.port2 |  quote }}
+    targetPort: {{ .Values.rabbit.service.port2 |  quote }}

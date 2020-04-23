@@ -1,0 +1,38 @@
+---
+ui:
+  service:
+    externalPort: 8000
+    targetPort: 8000
+    name: ui-service
+  deployment:
+    image: mamontov/ui:v1.2-ui
+    name: ui
+  ingress:
+    host: ui.domain.com
+
+crawler:
+  service:
+    externalPort: 8000
+    targetPort: 8000
+    name: crawler-service
+  deployment:
+    image: mamontov/crawler:v1.3
+    name: crawler
+  ingress:
+
+mongo:
+  service:
+    name: mongo-service
+    port: 27017
+  deployment:
+    name: mongo
+    image: mongo:4.0.18
+
+rabbit:
+  service:
+    name: rabbit-service
+    port1: 5672
+    port2: 15672
+  deployment:
+    name: rabbitmq
+    image: rabbitmq:3
