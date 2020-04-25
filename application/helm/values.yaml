@@ -5,7 +5,7 @@ ui:
     targetPort: 8000
     name: ui-service
   deployment:
-    image: mamontov/ui:v1.2-ui
+    image: mamontov/ui:v2.0
     name: ui
   ingress:
     host: ui.domain.com
@@ -16,8 +16,9 @@ crawler:
     targetPort: 8000
     name: crawler-service
   deployment:
-    image: mamontov/crawler:v1.3
+    image: mamontov/crawler:v2.9
     name: crawler
+    url: https://vitkhab.github.io/search_engine_test_site
   ingress:
 
 mongo:

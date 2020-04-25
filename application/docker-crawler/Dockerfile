@@ -1,13 +1,12 @@
-FROM alpine:3.11.5
+FROM python:3.6.0-alpine
 
-RUN apk add --no-cache git python3 busybox
+WORKDIR /app
+COPY . /app
 
-COPY . ./
-RUN pip3 install -r requirements.txt
-RUN chmod +x ./crawler.py
+RUN apk --no-cache --update add build-base && \
+pip install -r /app/requirements.txt && \
+apk del build-base
 
 EXPOSE 8000
 
-ENTRYPOINT []
-
-#ENTRYPOINT ["python3 search_engine_crawler/crawler/crawler.py"]
+ENTRYPOINT [ "python3", "crawler.py" ]

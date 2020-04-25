@@ -8,8 +8,8 @@ spec:
     app: {{ .Values.rabbit.deployment.name }}
   ports:
   - name: port1
-    port: {{ .Values.rabbit.service.port1 |  quote }}
-    targetPort: {{ .Values.rabbit.service.port1 |  quote }}
+    port: {{ .Values.rabbit.service.port1 }}
+    targetPort: {{ .Values.rabbit.service.port1 }}
   - name: port2
-    port: {{ .Values.rabbit.service.port2 |  quote }}
-    targetPort: {{ .Values.rabbit.service.port2 |  quote }}
+    port: {{ .Values.rabbit.service.port2 }}
+    targetPort: {{ .Values.rabbit.service.port2 }}

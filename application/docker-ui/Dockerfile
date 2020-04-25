@@ -9,5 +9,3 @@ RUN chmod +x ./ui.py
 EXPOSE 8000
 
 ENTRYPOINT []
-
-#ENTRYPOINT ["python3 search_engine_crawler/crawler/crawler.py"]
