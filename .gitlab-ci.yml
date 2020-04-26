@@ -73,7 +73,7 @@ deploy:
   stage: deploy
   variables:
     KUBE_NAMESPACE: application-namespace
-    name: application
+    name: application-$CI_JOB_ID
     CI_REGISTRY: 'index.docker.io'
     CI_APPLICATION_TAG: $CI_COMMIT_REF_SLUG
   before_script:
