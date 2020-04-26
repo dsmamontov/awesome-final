@@ -73,7 +73,7 @@ deploy:
   stage: deploy
   variables:
     KUBE_NAMESPACE: application-namespace
-    name: application-$CI_JOB_ID
+    name: application
     CI_REGISTRY: 'index.docker.io'
     CI_APPLICATION_TAG: $CI_COMMIT_REF_SLUG
   before_script:
@@ -108,7 +108,7 @@ deploy:
     - echo "Download helm dependencies..."
     - echo "Deploy helm release $name to $KUBE_NAMESPACE"
     - echo "Upgrading existing release..."
-    - helm upgrade --install --wait --force --namespace="$KUBE_NAMESPACE" --version="$CI_PIPELINE_ID-$CI_JOB_ID" --set crawler.deployment.image="mamontov/crawler:v2.9-$CI_APPLICATION_TAG" --set ui.deployment.image="mamontov/ui:v2.0-$CI_APPLICATION_TAG" "$name" application/helm/
+    - helm upgrade --install --wait --force --namespace="$KUBE_NAMESPACE" --version="$CI_PIPELINE_ID-$CI_JOB_ID" "$name" application/helm/
   when: manual
   only:
     refs:
