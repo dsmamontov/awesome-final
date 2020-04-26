@@ -54,5 +54,5 @@ helm upgrade --reuse-values --namespace monitoring --set rbac.create=true -f ./m
 ```
 kubectl create namespace application-namespace
 helm delete --purge application
-helm upgrade --install --namespace application-namespace application application/helm
+helm upgrade --install --force --namespace application-namespace application application/helm
 ```
