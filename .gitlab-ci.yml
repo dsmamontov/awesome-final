@@ -55,4 +55,6 @@ deploy:
         application/helm/
   when: manual
   only:
-    - master
+    refs:
+      - master
+    kubernetes: active
