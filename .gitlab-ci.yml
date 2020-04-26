@@ -108,6 +108,7 @@ deploy:
     - git clone http://gitlab-gitlab/$CI_PROJECT_NAMESPACE/awesome-final.git
     - echo "Download helm dependencies..."
     - echo "Deploy helm release $name to $KUBE_NAMESPACE"
+    - helm init
     - echo "Upgrading existing release..."
     - >
       helm upgrade \
