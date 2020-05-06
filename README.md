@@ -1,5 +1,27 @@
 # awesome-final
 
+Проект включает в себя контейнеризированное приложение-кравлер от Otus
+```
+https://github.com/express42/search_engine_crawler
+https://github.com/express42/search_engine_ui
+```
+
+Было сделано:
+1) Terrafrm-манифесты для gcp
+2) Код приложения докеризированн. Ссылки на докерхаб:
+```
+https://hub.docker.com/repository/docker/mamontov/ui
+https://hub.docker.com/repository/docker/mamontov/crawler
+```
+3) Развернут гитлаб из helm-чарта
+4) Настроен мониторинг кластера k8s и метрик приложения с помощью grafana и prometheus
+5) Написан helm-чарт приложения
+6) Настроен CI процесс деплоя приложения
+
+# демонстрация работы приложения
+
+тут будет ссылка
+
 # to terraform login
 ```
 gcloud auth application-default login
