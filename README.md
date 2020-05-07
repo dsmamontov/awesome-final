@@ -19,8 +19,9 @@ https://hub.docker.com/repository/docker/mamontov/crawler
 6) Настроен CI процесс деплоя приложения
 
 # демонстрация работы приложения
-
-тут будет ссылка
+```
+https://youtu.be/pbkKkdGH8oU
+```
 
 # to terraform login
 ```
