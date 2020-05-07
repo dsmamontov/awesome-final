@@ -21,6 +21,6 @@ metadata:
     release: {{ .Release.Name }}
 spec:
   type: ExternalName
-  externalName: crawler-service.default.svc.cluster.local
+  externalName: {{ .Values.crawler.service.name }}.application-namespace.svc.cluster.local
   ports:
-  - port: {{ .Values.ui.service.externalPort }}
+  - port: {{ .Values.crawler.service.externalPort }}

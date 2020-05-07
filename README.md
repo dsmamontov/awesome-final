@@ -69,7 +69,7 @@ https://github.com/express42/search_engine_ui
 ```
 # полезные команды
 ```
-helm upgrade --reuse-values --namespace monitoring --set rbac.create=true -f ./monitoring monitoring-operators stable/prometheus-operator
+helm upgrade --reuse-values --namespace monitoring --set rbac.create=true -f ./prometheus-operator-values.yaml monitoring-operators stable/prometheus-operator
 ```
 
 # деплой приложения через helm

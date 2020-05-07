@@ -1756,15 +1756,15 @@ prometheus:
     - job_name: 'ui'
       static_configs:
       - targets:
-        - ui-service:8000
+        - ui-service.application-namespace.svc.cluster.local:8000
         labels:
           metricsource: 'ui'
     - job_name: 'cawler'
       static_configs:
       - targets:
-        - crawler-service:8000
+        - crawler-service.application-namespace.svc.cluster.local:8000
         labels:
-          metricsource: 'cawler'
+          metricsource: 'crawler'
     # - job_name: kube-etcd
     #   kubernetes_sd_configs:
     #     - role: node

@@ -21,6 +21,6 @@ metadata:
     release: {{ .Release.Name }}
 spec:
   type: ExternalName
-  externalName: ui-service.default.svc.cluster.local
+  externalName: {{ .Values.ui.service.name }}.application-namespace.svc.cluster.local
   ports:
   - port: {{ .Values.ui.service.externalPort }}
